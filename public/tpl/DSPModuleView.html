@@ -1,0 +1,53 @@
+<div class="row-fluid">
+    <div class="span12">
+		<div class="hero-unit span12 pagination-centered">
+			<h1 class="dspName heading"><%= name %></h1><br>
+			<h3><a href="#/dsp/<%= name %>/demo">Check it out!</a></h3>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+    	<br>
+
+    	<h3>Create a new preset!</h3>
+
+		<ul class="nav nav-list" id="test">
+			<% _.each( params, function(param, iParam) { %>
+				<% if( param.name == "Extra Param Bytes" ) return; %>
+
+			    <div>
+			        <div class="span12">
+			        	<h5 class="paramName"><%= param.name %></h5>
+			        </div>
+
+			        <div class="span12">
+			        	<table class="table table-striped">
+							<tr>
+								<th style="width: 10%">Default</td>
+								<th style="width: 10%">Min</td>
+								<th style="width: 10%">Max</td>
+								<th style="width: 10%">Type</td>
+								<th style="width: 10%">Value</td>
+							</tr>
+							<tr>
+								<td><%= param.default %></td>
+								<td><%= param.min %></td>
+								<td><%= param.max %></td>
+								<td class="paramType" ><%= param.type %></td>
+								<td><input class="param" value="<%= param.value %>"></input></td>
+							</tr>
+						</table>
+			        </div>
+			    </div>
+			<% }); %>
+		</ul>
+
+		<div class="span12">
+			<button type="button" id="btnSubmitParamValues" onclick="updateParamValues()" class="btn btn-default btn-lg">
+				<h3>Save Preset</h3>
+			</button>
+			<input id="newPresetName" value="preset name" type="text" class="form-control"></input>
+		</div>
+    </div>
+</div>
